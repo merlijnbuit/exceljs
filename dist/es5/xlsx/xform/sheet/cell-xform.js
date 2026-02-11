@@ -188,6 +188,9 @@ class CellXform extends BaseXform {
     if (model.styleId) {
       xmlStream.addAttribute('s', model.styleId);
     }
+    if (model.valueMetadata !== undefined) {
+      xmlStream.addAttribute('vm', model.valueMetadata);
+    }
     switch (model.type) {
       case Enums.ValueType.Null:
         break;
@@ -254,6 +257,9 @@ class CellXform extends BaseXform {
           address: node.attributes.r
         };
         this.t = node.attributes.t;
+        if (node.attributes.vm !== undefined) {
+          this.model.valueMetadata = parseInt(node.attributes.vm, 10);
+        }
         if (node.attributes.s) {
           this.model.styleId = parseInt(node.attributes.s, 10);
         }

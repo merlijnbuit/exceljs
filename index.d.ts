@@ -421,6 +421,7 @@ export interface CellModel {
 	sharedFormula?: string;
 	result?: string | number | any;
 	comment: Comment;
+	valueMetadata?: number;
 }
 
 export interface Cell extends Style, Address {
@@ -1340,6 +1341,12 @@ export interface Worksheet {
 	 * embed an image within the worksheet to cover a range
 	 */
 	addImage(imageId: number, range: string | { editAs?: ImageEditAs; } & ImageRange & { hyperlinks?: ImageHyperlinkValue } | { editAs?: ImageEditAs; } & ImagePosition & { hyperlinks?: ImageHyperlinkValue }): void;
+
+	/**
+	 * Using the image id from `Workbook.addImage`,
+	 * embed an image within a single cell (Excel "Place in Cell" behavior)
+	 */
+	addImageToCell(imageId: number, cell: Cell | string): void;
 
 	getImages(): Array<{
 		type: 'image',

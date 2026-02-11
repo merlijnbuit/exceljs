@@ -4,6 +4,7 @@ const Worksheet = require('./worksheet');
 const DefinedNames = require('./defined-names');
 const XLSX = require('../xlsx/xlsx');
 const CSV = require('../csv/csv');
+const RichValueStore = require('./rich-value');
 
 // Workbook requirements
 //  Load and Save from file and stream
@@ -29,6 +30,7 @@ class Workbook {
     this.media = [];
     this.pivotTables = [];
     this._definedNames = new DefinedNames();
+    this._richValue = null;
   }
   get xlsx() {
     if (!this._xlsx) this._xlsx = new XLSX(this);
@@ -131,6 +133,12 @@ class Workbook {
   getImage(id) {
     return this.media[id];
   }
+  _addRichValueImage(imageId) {
+    if (!this._richValue) {
+      this._richValue = new RichValueStore();
+    }
+    return this._richValue.addLocalImage(imageId);
+  }
   get model() {
     return {
       creator: this.creator || 'Unknown',
@@ -156,7 +164,8 @@ class Workbook {
       themes: this._themes,
       media: this.media,
       pivotTables: this.pivotTables,
-      calcProperties: this.calcProperties
+      calcProperties: this.calcProperties,
+      richValue: this._richValue && this._richValue.model
     };
   }
   set model(value) {

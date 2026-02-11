@@ -71,6 +71,28 @@ class ContentTypesXform extends BaseXform {
         ContentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml'
       });
     }
+    if (model.richValue && (model.richValue.values || []).length) {
+      xmlStream.leafNode('Override', {
+        PartName: '/xl/metadata.xml',
+        ContentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheetMetadata+xml'
+      });
+      xmlStream.leafNode('Override', {
+        PartName: '/xl/richData/richValueRel.xml',
+        ContentType: 'application/vnd.ms-excel.richvaluerel+xml'
+      });
+      xmlStream.leafNode('Override', {
+        PartName: '/xl/richData/rdrichvalue.xml',
+        ContentType: 'application/vnd.ms-excel.rdrichvalue+xml'
+      });
+      xmlStream.leafNode('Override', {
+        PartName: '/xl/richData/rdrichvaluestructure.xml',
+        ContentType: 'application/vnd.ms-excel.rdrichvaluestructure+xml'
+      });
+      xmlStream.leafNode('Override', {
+        PartName: '/xl/richData/rdRichValueTypes.xml',
+        ContentType: 'application/vnd.ms-excel.rdrichvaluetypes+xml'
+      });
+    }
     if (model.tables) {
       model.tables.forEach(table => {
         xmlStream.leafNode('Override', {

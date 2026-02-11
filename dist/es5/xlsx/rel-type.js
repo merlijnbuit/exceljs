@@ -16,6 +16,11 @@ module.exports = {
   Table: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/table',
   PivotCacheDefinition: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotCacheDefinition',
   PivotCacheRecords: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotCacheRecords',
-  PivotTable: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotTable'
+  PivotTable: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotTable',
+  SheetMetadata: 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/sheetMetadata',
+  RdRichValue: 'http://schemas.microsoft.com/office/2017/06/relationships/rdRichValue',
+  RdRichValueStructure: 'http://schemas.microsoft.com/office/2017/06/relationships/rdRichValueStructure',
+  RdRichValueTypes: 'http://schemas.microsoft.com/office/2017/06/relationships/rdRichValueTypes',
+  RichValueRel: 'http://schemas.microsoft.com/office/2022/10/relationships/richValueRel'
 };
 //# sourceMappingURL=rel-type.js.map

@@ -2076,6 +2076,17 @@ worksheet.addImage(imageId2, {
 });
 ```
 
+### Add image in a cell (Place in Cell)[⬆](#contents)<!-- Link generated with jump2header -->
+
+You can embed an image *inside* a single cell using Excel's "Place in Cell" feature.
+This makes the image resize with the cell (row height/column width).
+
+```javascript
+worksheet.addImageToCell(imageId2, 'A1');
+```
+
+Note: this feature is not supported in streaming mode.
+
 ### Add image with hyperlinks[⬆](#contents)<!-- Link generated with jump2header -->
 
 You can add an image with hyperlinks to a cell, and defines the hyperlinks in image range.
